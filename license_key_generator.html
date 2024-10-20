@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Key Generator</title>
+    <style>
+        body {
+		background-color: Blue;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+        }
+        pre {
+            background-color: pink;
+            padding: 10px;
+            border: 1px solid #ddd;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>MQL4 License Key Generator</h1>
+    <label for="numKeys">Number of License Keys:</label>
+    <input type="number" id="numKeys" min="1" value="1">
+    <label for="expiryDays">Expiry (in days):</label>
+    <input type="number" id="expiryDays" min="1" value="30">
+    <button id="generateBtn">Generate Keys</button>
+    <h2>Generated License Keys:</h2>
+    <pre id="output"></pre>
+<!-- Styling the button (CSS) -->
+<style>
+    .generateBtn {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .generateBtn:hover {
+        background-color: white;
+    }
+</style>
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', async () => {
+            const numKeys = document.getElementById('numKeys').value;
+            const expiryDays = document.getElementById('expiryDays').value;
+            const response = await fetch('generate_keys.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ numKeys, expiryDays }),
+            });
+            const data = await response.json();
+            document.getElementById('output').textContent = data.keys.join('\n');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master - Copy Trading</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center><font color="white">  <section id="master" class="animate__animated animate__fadeIn">
+        <div class="master-container">
+            <h1>Master - Become a Signal Provider</h1>
+            <p>Set up your MetaTrader 5 account to share trading signals.</p>
+
+            <!-- Provide MetaTrader 5 details -->
+            <form action="master_setup.php" method="POST">
+                <label for="mt5-id">MetaTrader 5 Account ID:</label><br>
+                <input type="text" id="mt5-id" name="mt5-id" required><br><br>
+
+                <label for="api-key">API Key:</label><br>
+                <input type="text" id="api-key" name="api-key" required><br><br>
+
+                <label for="subscription-price">Subscription Price (USD):</label><br>
+                <input type="number" id="subscription-price" name="subscription-price" required><br><br>
+
+                <button type="submit" class="role-btn">Submit</button>
+            </form>
+        </div>
+    </section> </center>
+</body>
+</html>

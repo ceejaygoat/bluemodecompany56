@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slave - Follow a Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center> <font color="white"><section id="slave" class="animate__animated animate__fadeIn">
+        <div class="slave-container">
+            <h1>Slave - Follow a Master</h1>
+            <p>Select a signal provider (Master) to follow their trades automatically.</p>
+
+            <!-- Master Selection Form -->
+            <form action="slave_setup.php" method="POST">
+                <label for="master-id">Select Master (Account ID):</label><br>
+                <select id="master-id" name="master-id">
+                    <!-- Populate dynamically with available Masters -->
+                    <option value="123456">Master 123456</option>
+                    <option value="789012">Master 789012</option>
+                </select><br><br>
+
+                <button type="submit" class="role-btn">Follow Master</button>
+            </form>
+        </div>
+    </section> </center>
+</body>
+</html>

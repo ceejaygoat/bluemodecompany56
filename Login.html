@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Bluemode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Login Section -->
+    <section id="login" class="animate__animated animate__fadeIn">
+        <div class="login-container">
+            <h1>Welcome to Bluemode</h1>
+            <p>Please sign in to continue.</p>
+            
+            <!-- Google Sign-In Button -->
+            <div id="sign-in-btn" class="g_id_signin"
+                data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                data-callback="handleCredentialResponse"
+                data-auto_prompt="false"
+                data-width="250"
+                data-height="50"
+                data-longtitle="true"
+                data-theme="outline">
+            </div>
+
+            <p id="user-status" style="display:none;"></p> <!-- Hidden status -->
+
+            <!-- Sign-Out Button -->
+            <button id="sign-out-btn" style="display:none;" onclick="signOut()">Sign Out</button>
+        </div>
+    </section>
+
+    <!-- JavaScript for Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        let googleUser;
+
+        // Handle response from Google Sign-In
+        function handleCredentialResponse(response) {
+            const userObject = jwt_decode(response.credential);
+            console.log(userObject);  // Check user information from Google
+
+            // Save user information
+            localStorage.setItem("googleUser", JSON.stringify(userObject));
+
+            // Redirect to services page after successful login
+            window.location.href = "index.html";
+        }
+
+        // Sign-out function
+        function signOut() {
+            localStorage.removeItem("googleUser");
+            document.getElementById("user-status").textContent = "Not signed in";
+            document.getElementById("sign-in-btn").style.display = "block";
+            document.getElementById("sign-out-btn").style.display = "none";
+        }
+
+        window.onload = function () {
+            const googleUser = localStorage.getItem("googleUser");
+
+            if (googleUser) {
+                const userObject = JSON.parse(googleUser);
+                document.getElementById("user-status").textContent = `Signed in as ${userObject.name}`;
+                document.getElementById("sign-in-btn").style.display = "none";
+                document.getElementById("sign-out-btn").style.display = "block";
+
+                // Automatically redirect to services page
+                window.location.href = "services.html";
+            }
+        }
+    </script>
+
+    <!-- Styling for Login Page -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #login {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-container h1 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .login-container p {
+            color: #333;
+        }
+
+        #sign-in-btn {
+            margin-top: 20px;
+        }
+
+        #sign-out-btn {
+            margin-top: 20px;
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #sign-out-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>

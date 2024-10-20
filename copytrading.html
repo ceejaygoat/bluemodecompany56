@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Trading - Bluemode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Copy Trading Section -->
+    <section id="copy-trading" class="animate__animated animate__fadeIn">
+        <div class="copy-trading-container">
+            <h1>Copy Trading - MetaTrader 5</h1>
+            <p>Select your role for Copy Trading:</p>
+
+            <!-- Master Role (Signal Provider) -->
+            <div class="role-section">
+                <h2>Master</h2>
+                <p>Become a signal provider and let other traders copy your trades.</p>
+                <button onclick="location.href='master.html';" class="role-btn">Become Master</button>
+            </div>
+
+            <!-- Slave Role (Follower) -->
+            <div class="role-section">
+                <h2>Slave</h2>
+                <p>Follow a master and automatically copy their trades.</p>
+                <button onclick="location.href='slave.html';" class="role-btn">Become Slave</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #copy-trading {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .copy-trading-container h1 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .role-section {
+            margin: 20px 0;
+        }
+
+        .role-btn {
+            background-color: #0072ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .role-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>
